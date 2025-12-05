@@ -1,20 +1,178 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<title>Carro Fervendo - Diagnóstico</title>
-<style>
-body { font-family: Arial; background:#f5f5f5; padding:40px; text-align:center; }
-.card { background:white; padding:40px; max-width:600px; margin:auto; border-radius:10px; box-shadow:0 0 20px rgba(0,0,0,.1); }
-.btn { padding:15px 30px; background:#007bff; color:white; border-radius:8px; text-decoration:none; font-size:20px; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagnóstico Arrefecimento</title>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-<div class="card">
-<h1>Carro Fervendo - App</h1>
-<p>Ferramenta online para diagnóstico rápido de superaquecimento automotivo.</p>
-<a class="btn" href="download.html">Baixar o App</a>
-</div>
+  <div id="app">
+    <div class="card">
+      <form id="diagnostic-form">
+        <div class="section">
+          <div class="section-title">Dados do veículo</div>
+          <div class="field-row">
+            <label>
+              Modelo / Ano
+              <input type="text" id="modeloAno" placeholder="Ex: Gol 1.6 2014" required />
+            </label>
+          </div>
+          <div class="field-row">
+            <label>
+              Tipo de motor
+              <input type="text" id="tipoMotor" placeholder="Ex: 1.0 8v flex" required />
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Condição de funcionamento</div>
+          <div class="field-grid">
+            <label>
+              Temperatura no painel
+              <input type="text" id="tempPainel" placeholder="Ex: 90°C, perto do vermelho" required />
+            </label>
+            <label>
+              Quando ocorre
+              <select id="quandoOcorre" required>
+                <option value="">Selecione</option>
+                <option value="frio">Só com motor frio</option>
+                <option value="quente">Só com motor quente</option>
+                <option value="transito">Mais no trânsito</option>
+                <option value="estrada">Mais na estrada</option>
+                <option value="sempre">O tempo todo</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Sistema de arrefecimento</div>
+          <div class="field-grid">
+            <label>
+              Precisa completar água?
+              <select id="perdaAgua" required>
+                <option value="">Selecione</option>
+                <option value="nao">Não</option>
+                <option value="sim_1x_semana">Sim, cerca de 1x por semana</option>
+                <option value="sim_1x_dia">Sim, praticamente todo dia</option>
+                <option value="sim_apos_esquentar">Sim, depois que esquenta</option>
+              </select>
+            </label>
+            <label>
+              Ventoinha aciona?
+              <select id="ventoinhaAciona" required>
+                <option value="">Selecione</option>
+                <option value="sim_normal">Sim, normal</option>
+                <option value="sim_tempo_todo">Sim, quase o tempo todo</option>
+                <option value="nao">Não aciona</option>
+                <option value="nao_sei">Não sei informar</option>
+              </select>
+            </label>
+          </div>
+          <div class="field-grid">
+            <label>
+              Cor do líquido
+              <select id="corLiquido" required>
+                <option value="">Selecione</option>
+                <option value="verde">Verde</option>
+                <option value="vermelho_rosa">Vermelho / rosa</option>
+                <option value="amarelo_laranja">Amarelo / laranja</option>
+                <option value="apenas_agua">Apenas água</option>
+                <option value="escuro_sujo">Escuro / enferrujado</option>
+              </select>
+            </label>
+            <label>
+              Aparência do líquido
+              <select id="aparenciaLiquido" required>
+                <option value="">Selecione</option>
+                <option value="limpo">Limpo</option>
+                <option value="oleoso">Oleoso / com nata</option>
+                <option value="borra">Com borra ou partículas</option>
+                <option value="nao_sei">Não sei dizer</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Sinais visíveis</div>
+          <div class="field-grid">
+            <label>
+              Vazamentos visíveis
+              <select id="vazamentosVisiveis" required>
+                <option value="">Selecione</option>
+                <option value="nenhum">Nenhum</option>
+                <option value="radiador">No radiador</option>
+                <option value="reservatorio">No reservatório / tampa</option>
+                <option value="mangueiras">Nas mangueiras</option>
+                <option value="interno_carpete">Dentro do carro (carpete úmido)</option>
+                <option value="embaixo_motor">No chão sob o motor</option>
+              </select>
+            </label>
+            <label>
+              Fumaça branca
+              <select id="fumacaBranca" required>
+                <option value="">Selecione</option>
+                <option value="nao">Não</option>
+                <option value="sim_frio">Sim, só com motor frio</option>
+                <option value="sim_semparar">Sim, direto mesmo quente</option>
+              </select>
+            </label>
+          </div>
+          <div class="field-grid">
+            <label>
+              Cheiros / barulhos
+              <select id="cheirosBarulhos" required>
+                <option value="">Selecione</option>
+                <option value="normal">Nada diferente</option>
+                <option value="cheiro_doce">Cheiro adocicado</option>
+                <option value="cheiro_queimado">Cheiro de queimado</option>
+                <option value="barulho_corrente">Barulho de correia / rolamento</option>
+                <option value="barulho_borbulha">Barulho de borbulhamento</option>
+              </select>
+            </label>
+            <label>
+              Luzes no painel
+              <select id="luzesPainel" required>
+                <option value="">Selecione</option>
+                <option value="nenhuma">Nenhuma</option>
+                <option value="temp">Luz de temperatura</option>
+                <option value="injecao">Luz de injeção</option>
+                <option value="ambas">Ambas</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Histórico e sintomas</div>
+          <div class="field-row">
+            <label>
+              Histórico recente de manutenção
+              <textarea id="historico" rows="2" placeholder="Ex: troca de radiador, junta, bomba d’água, aditivo..."></textarea>
+            </label>
+          </div>
+          <div class="field-row">
+            <label>
+              Descreva todos os sintomas
+              <textarea id="sintomas" rows="3" placeholder="Ex: ferve no trânsito, sobe nível no reservatório, mangueira dura, sem aquecimento interno..." required></textarea>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="primary-btn">Gerar diagnóstico</button>
+      </form>
+    </div>
+
+    <div class="card result-card">
+      <div class="section-title result-title">Diagnóstico</div>
+      <div id="resultado" class="resultado"></div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
 </body>
 </html>
+
