@@ -1,12 +1,23 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Download</title>
+<meta charset="UTF-8" />
+<title>Download do App</title>
+<style>
+body { font-family: Arial; background:#eef2f3; padding:40px; text-align:center; }
+.card { background:white; padding:40px; max-width:600px; margin:auto; border-radius:10px; box-shadow:0 0 20px rgba(0,0,0,.1); }
+.btn { padding:15px 30px; background:#28a745; color:white; border-radius:8px; text-decoration:none; font-size:22px; }
+.qr { margin-top:20px; }
+</style>
 </head>
 <body>
+<div class="card">
 <h1>Download do App</h1>
-<p>Clique no botão abaixo para baixar:</p>
-<a href="app-release.apk" download>Baixar APK</a>
+<p>Clique no botão abaixo para baixar o APK (Android):</p>
+<a class="btn" href="app-release.apk" download>📥 Baixar APK</a>
+<p class="qr">Ou escaneie o QR Code:</p>
+<img src="qrcode.png" width="200" />
+</div>
 </body>
 </html>
